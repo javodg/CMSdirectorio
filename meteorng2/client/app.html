@@ -1,0 +1,10 @@
+<div>
+  <ul>
+    <li *ngFor="let cliente of clientes">
+      {{cliente._id}}
+      {{cliente.identificacion.nombre}}
+      <p>Dueño: {{cliente.identificacion.razonsocial}}</p>
+      <p>{{cliente.contacto.telefonos[0].numero}}</p>
+    </li>
+  </ul>
+</div>
