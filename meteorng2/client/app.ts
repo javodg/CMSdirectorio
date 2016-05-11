@@ -10,11 +10,11 @@ import { Tracker } from 'meteor/tracker';
  templateUrl: 'client/app.html'
 })
 class Directorio {
- clientes: Array<Object>;
+ negocios: Array<Object>;
 
  constructor(zone: NgZone) {
   Tracker.autorun(() => zone.run(() => {
-   this.clientes = Negocios.find().fetch();
+   this.negocios = Negocios.find().fetch();
   }));
  }
 }

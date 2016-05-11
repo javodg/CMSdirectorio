@@ -18,7 +18,7 @@ var Directorio = (function () {
     function Directorio(zone) {
         var _this = this;
         tracker_1.Tracker.autorun(function () { return zone.run(function () {
-            _this.clientes = negocios_1.Negocios.find().fetch();
+            _this.negocios = negocios_1.Negocios.find().fetch();
         }); });
     }
     Directorio = __decorate([

@@ -1,10 +1,10 @@
 <div>
   <ul>
-    <li *ngFor="let cliente of clientes">
-      {{cliente._id}}
-      {{cliente.identificacion.nombre}}
-      <p>Dueño: {{cliente.identificacion.razonsocial}}</p>
-      <p>{{cliente.contacto.telefono[0].numero}}</p>
+    <li *ngFor="let negocio of negocios">
+      {{negocio._id}}
+      {{negocio.identificacion.nombre}}
+      <p>Dueño: {{negocio.identificacion.razonsocial}}</p>
+      <p>{{negocio.contacto.telefono[0].numero}}</p>
     </li>
   </ul>
 </div>
