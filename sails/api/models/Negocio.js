@@ -6,8 +6,7 @@
  */
 
 module.exports = {
-  connection: 'negociosdbServer',
   attributes: {
-
+    
   }
 };

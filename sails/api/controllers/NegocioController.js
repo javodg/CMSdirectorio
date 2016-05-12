@@ -6,6 +6,9 @@
  */
 
 module.exports = {
-	
+ index: function (req, res) {
+  sails.log("prueba de mensaje");
+	var data = req.params.all();
+  return res.send(data);
+ }
 };
-
