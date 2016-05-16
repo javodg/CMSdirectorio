@@ -11,7 +11,11 @@
  */
 
 module.exports = {
-
+  models: {
+   connection: 'negociosdbServer',
+   migrate: 'alter'
+ }, // TODO Pendiente configurar la base de datos de produccion
+port: 80
   /***************************************************************************
    * Set the default database connection for models in the production        *
    * environment (see config/connections.js and config/models.js )           *

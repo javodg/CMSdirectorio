@@ -31,7 +31,12 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
+  'GET negocio/nuevo/' : {
+    view : 'nuevonegocio.html'
+  },
+  'GET lista/' : {
+    view : 'lista'
+  }
   //'/': {
   //  view: 'index.html'
   //}
