@@ -3,7 +3,6 @@ var React = require('react');
 var Navbar = React.createClass({
   render: function () {
     return (
-      <header className="header header-transparent">
        <div className="header-wrapper">
         <div className="container">
          <div className="header-inner">
@@ -78,7 +77,6 @@ var Navbar = React.createClass({
          </div>
         </div>
        </div>
-      </header>
     );
   }
 });
