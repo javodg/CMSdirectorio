@@ -45,6 +45,6 @@
   "grunt-sass": "^1.2.0"
  },
  "engines" : {
-  "node": "5.11.x"
+  "node": "4.22.x"
  }
 }
