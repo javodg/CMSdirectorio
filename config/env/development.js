@@ -22,5 +22,4 @@ module.exports = {
   migrate: 'alter'
 },
 port : 8080
-
 };

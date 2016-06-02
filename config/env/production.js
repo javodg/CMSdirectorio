@@ -12,7 +12,7 @@
 
 module.exports = {
   models: {
-   connection: 'negociosdbServer',
+   connection: 'negociosDBProd',
    migrate: 'alter'
  }, // TODO Pendiente configurar la base de datos de produccion
 port: 80
