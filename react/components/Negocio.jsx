@@ -56,7 +56,7 @@ var Negocio = React.createClass({
          <div className="card-row-price">{data.clasificacion.producto[0]} / {data.clasificacion.producto[1]} / {data.clasificacion.producto[2]}</div>
         </div>
         <div className="card-row-body">
-         <h2 className="card-row-title"><a href="listing-detail.html">{data.identificacion.nombre}</a></h2>
+         <h2 className="card-row-title"><a href="listing-detail.html">{this.props.nombre}</a></h2>
          <div className="card-row-content">
           <p>{data.descripcion.larga}</p>
          </div>
@@ -72,7 +72,11 @@ var Negocio = React.createClass({
           <dd>Rating</dd>
           <dt>
             <div className="card-row-rating">
-                <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i>
+              <i className="fa fa-star" />
+              <i className="fa fa-star" />
+              <i className="fa fa-star" />
+              <i className="fa fa-star" />
+              <i className="fa fa-star" />
             </div>
           </dt>
          </dl>

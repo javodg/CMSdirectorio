@@ -18287,18 +18287,18 @@ var EventListener = {
    * @param {function} callback Callback function.
    * @return {object} Object with a `remove` method.
    */
-  listen: function (target, eventType, callback) {
+  listen: function listen(target, eventType, callback) {
     if (target.addEventListener) {
       target.addEventListener(eventType, callback, false);
       return {
-        remove: function () {
+        remove: function remove() {
           target.removeEventListener(eventType, callback, false);
         }
       };
     } else if (target.attachEvent) {
       target.attachEvent('on' + eventType, callback);
       return {
-        remove: function () {
+        remove: function remove() {
           target.detachEvent('on' + eventType, callback);
         }
       };
@@ -18313,11 +18313,11 @@ var EventListener = {
    * @param {function} callback Callback function.
    * @return {object} Object with a `remove` method.
    */
-  capture: function (target, eventType, callback) {
+  capture: function capture(target, eventType, callback) {
     if (target.addEventListener) {
       target.addEventListener(eventType, callback, true);
       return {
-        remove: function () {
+        remove: function remove() {
           target.removeEventListener(eventType, callback, true);
         }
       };
@@ -18331,7 +18331,7 @@ var EventListener = {
     }
   },
 
-  registerDefault: function () {}
+  registerDefault: function registerDefault() {}
 };
 
 module.exports = EventListener;
@@ -18455,7 +18455,7 @@ module.exports = camelizeStyleName;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @typechecks
+ * 
  */
 
 var isTextNode = require('./isTextNode');
@@ -18464,10 +18464,6 @@ var isTextNode = require('./isTextNode');
 
 /**
  * Checks if a given DOM node contains or is another DOM node.
- *
- * @param {?DOMNode} outerNode Outer DOM node.
- * @param {?DOMNode} innerNode Inner DOM node.
- * @return {boolean} True if `outerNode` contains or is `innerNode`.
  */
 function containsNode(outerNode, innerNode) {
   if (!outerNode || !innerNode) {
@@ -18478,7 +18474,7 @@ function containsNode(outerNode, innerNode) {
     return false;
   } else if (isTextNode(innerNode)) {
     return containsNode(outerNode, innerNode.parentNode);
-  } else if (outerNode.contains) {
+  } else if ('contains' in outerNode) {
     return outerNode.contains(innerNode);
   } else if (outerNode.compareDocumentPosition) {
     return !!(outerNode.compareDocumentPosition(innerNode) & 16);
@@ -18714,6 +18710,7 @@ module.exports = createNodesFromMarkup;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
+ * 
  */
 
 function makeEmptyFunction(arg) {
@@ -18727,7 +18724,7 @@ function makeEmptyFunction(arg) {
  * primarily useful idiomatically for overridable function endpoints which
  * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
  */
-function emptyFunction() {}
+var emptyFunction = function emptyFunction() {};
 
 emptyFunction.thatReturns = makeEmptyFunction;
 emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
@@ -19168,7 +19165,7 @@ var invariant = require('./invariant');
  * @param {object} obj
  * @return {object}
  */
-var keyMirror = function (obj) {
+var keyMirror = function keyMirror(obj) {
   var ret = {};
   var key;
   !(obj instanceof Object && !Array.isArray(obj)) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'keyMirror(...): Argument must be an object.') : invariant(false) : void 0;
@@ -19206,7 +19203,7 @@ module.exports = keyMirror;
  * 'xa12' in that case. Resolve keys you want to use once at startup time, then
  * reuse those resolutions.
  */
-var keyOf = function (oneKeyObj) {
+var keyOf = function keyOf(oneKeyObj) {
   var key;
   for (key in oneKeyObj) {
     if (!oneKeyObj.hasOwnProperty(key)) {
@@ -19278,6 +19275,7 @@ module.exports = mapObject;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
+ * 
  * @typechecks static-only
  */
 
@@ -19285,9 +19283,6 @@ module.exports = mapObject;
 
 /**
  * Memoizes the return value of a function that accepts one string argument.
- *
- * @param {function} callback
- * @return {function}
  */
 
 function memoizeStringOnly(callback) {
@@ -19348,11 +19343,11 @@ var performanceNow;
  * because of Facebook's testing infrastructure.
  */
 if (performance.now) {
-  performanceNow = function () {
+  performanceNow = function performanceNow() {
     return performance.now();
   };
 } else {
-  performanceNow = function () {
+  performanceNow = function performanceNow() {
     return Date.now();
   };
 }
@@ -19451,7 +19446,7 @@ var emptyFunction = require('./emptyFunction');
 var warning = emptyFunction;
 
 if (process.env.NODE_ENV !== 'production') {
-  warning = function (condition, format) {
+  warning = function warning(condition, format) {
     for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
       args[_key - 2] = arguments[_key];
     }
@@ -19672,6 +19667,27 @@ process.umask = function() { return 0; };
 
 },{}],168:[function(require,module,exports){
 var React = require('react');
+var Negocio = require('./Negocio.jsx');
+
+var ListaNegocios = React.createClass({
+	displayName: 'ListaNegocios',
+
+	render: function () {
+		var crearNegocio = function (nombre, id) {
+			return React.createElement(Negocio, { key: id + nombre, nombre: nombre });
+		};
+		return React.createElement(
+			'div',
+			null,
+			this.props.negocios.map(crearNegocio)
+		);
+	}
+});
+
+module.exports = ListaNegocios;
+
+},{"./Negocio.jsx":169,"react":166}],169:[function(require,module,exports){
+var React = require('react');
 
 var data = {
   id: 1,
@@ -19753,7 +19769,7 @@ var Negocio = React.createClass({
             React.createElement(
               "a",
               { href: "listing-detail.html" },
-              data.identificacion.nombre
+              this.props.nombre
             )
           ),
           React.createElement(
@@ -19815,13 +19831,9 @@ var Negocio = React.createClass({
                 "div",
                 { className: "card-row-rating" },
                 React.createElement("i", { className: "fa fa-star" }),
-                " ",
                 React.createElement("i", { className: "fa fa-star" }),
-                " ",
                 React.createElement("i", { className: "fa fa-star" }),
-                " ",
                 React.createElement("i", { className: "fa fa-star" }),
-                " ",
                 React.createElement("i", { className: "fa fa-star" })
               )
             )
@@ -19841,14 +19853,42 @@ deserunt mollit anim id est laborum." }, "createdAt": "2016-05-11T23:38:00.767Z"
 
 module.exports = Negocio;
 
-},{"react":166}],169:[function(require,module,exports){
+},{"react":166}],170:[function(require,module,exports){
+var React = require('react');
+var ListaNegocios = require('./ListaNegocios.jsx');
+
+var Resultados = React.createClass({
+	displayName: 'Resultados',
+
+	getInitialState: function () {
+		return { negocios: [], nuevoNegocio: '' };
+	},
+	handleSubmit: function (e) {
+		e.preventDefault();
+		var Negociosactuales = this.state.items;
+		Negociosactuales.push(this.state.nuevoNegocio);
+	},
+	render: function () {
+		return React.createElement(
+			'div',
+			null,
+			'Resultados de busqueda',
+			React.createElement(ListaNegocios, { negocios: ["Enemedios", "01"] })
+		);
+	}
+});
+
+module.exports = Resultados;
+
+},{"./ListaNegocios.jsx":168,"react":166}],171:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var Negocio = require('./components/Negocio.jsx');
+var Resultados = require('./components/Resultados.jsx');
+//var Lista = require('./components/ListaNegocios.jsx');
 
 //ReactDOM.render(<Navbar />, document.getElementById('Navbar'));
 //ReactDOM.render(<Negocio  nombre="Enemedios" />, document.getElementById('Negocio'));
-ReactDOM.render(React.createElement(Negocio, null), document.getElementById('Resultados'));
+ReactDOM.render(React.createElement(Resultados, null), document.getElementById('Resultados'));
 
-},{"./components/Negocio.jsx":168,"react":166,"react-dom":1}]},{},[169]);
+},{"./components/Resultados.jsx":170,"react":166,"react-dom":1}]},{},[171]);
