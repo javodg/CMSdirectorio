@@ -56,14 +56,7 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  negociosdbServer: {
-     adapter: 'sails-mongo',
-     host: 'localhost',
-     port: 27017,
-     //user: 'username', //optional
-     //password: 'password', //optional
-     database: 'negocio' //optional
-   },
+
    negociosDBProd: {
      adapter: 'sails-mongo',
      url: process.env.MONGODB_URI
