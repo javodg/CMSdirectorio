@@ -32,7 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'GET negocio/nuevo/' : {
-    view : 'nuevonegocio.html'
+    view : 'nuevonegocio'
   },
   'GET lista/' : {
     view : 'lista'

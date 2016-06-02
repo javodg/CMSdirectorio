@@ -20,7 +20,8 @@
  */
 
 module.exports.connections = {
-
+  var coneccion = process.env.sails_port;
+  sails.log.warn(coneccion);
   /***************************************************************************
   *                                                                          *
   * Local disk storage for DEVELOPMENT ONLY                                  *
@@ -64,8 +65,8 @@ module.exports.connections = {
      //password: 'password', //optional
      database: 'negocio' //optional
    },
-
-   //mongodb://<dbuser>:<dbpassword>@ds023118.mlab.com:23118/enemedios
+  //mongodb://<dbuser>:<dbpassword>@ds023118.mlab.com:23118/enemedios
+  //mongodb://<dbuser>:<dbpassword>@ds047065.mlab.com:47065/heroku_bjl7733k
 
   /***************************************************************************
   *                                                                          *
