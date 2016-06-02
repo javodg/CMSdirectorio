@@ -66,7 +66,7 @@ module.exports.connections = {
    },
    negociosDBProd: {
      adapter: 'sails-mongo',
-     url: 'mongodb://'+process.env.DBuser+':'+process.env.DBpass+'@ds047065.mlab.com:47065/heroku_bjl7733k'
+     url: process.env.MONGODB_URI
    }
   //mongodb://<dbuser>:<dbpassword>@ds023118.mlab.com:23118/enemedios
   //mongodb://<dbuser>:<dbpassword>@ds047065.mlab.com:47065/heroku_bjl7733k
