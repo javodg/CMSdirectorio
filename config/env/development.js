@@ -16,14 +16,7 @@ module.exports = {
   * Set the default database connection for models in the development       *
   * environment (see config/connections.js and config/models.js )           *
   ***************************************************************************/
-  negociosdbServer: {
-     adapter: 'sails-mongo',
-     host: 'localhost',
-     port: 27017,
-     //user: 'username', //optional
-     //password: 'password', //optional
-     database: 'negocio' //optional
-   },
+
  models: {
   connection: 'negociosdbServer',
   migrate: 'alter'

@@ -58,15 +58,15 @@ var Negocio = React.createClass({
         <div className="card-row-body">
          <h2 className="card-row-title"><a href="listing-detail.html">{this.props.nombre}</a></h2>
          <div className="card-row-content">
-          <p>{data.descripcion.larga}</p>
+          <p>{data.descripcion.corta}</p>
          </div>
         </div>
         <div className="card-row-properties">
          <dl>
           <dd>Horarios</dd>
           <dt>
-            Lunes a Viernes: {data.horarios[0].abre} a {data.horarios[0].cierra} <br />
-          Sabados: {data.horarios[1].abre} a {data.horarios[1].cierra} <br />
+            L a V: {data.horarios[0].abre} a {data.horarios[0].cierra} <br />
+            S y D: {data.horarios[1].abre} a {data.horarios[1].cierra} <br />
           </dt>
           <dd>Categoria</dd><dt>{data.clasificacion.categoria}</dt>
           <dd>Rating</dd>

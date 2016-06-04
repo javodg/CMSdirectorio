@@ -13,8 +13,7 @@ var Resultados = React.createClass({
 	render: function() {
 		return (
 			<div>
-				Resultados de busqueda
-				<ListaNegocios negocios={["Enemedios","01"]} />
+				<ListaNegocios negocios={["Enemedios","02","03","04","05","06","07","08"]} />
 			</div>
 		)
 

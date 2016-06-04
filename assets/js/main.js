@@ -19778,7 +19778,7 @@ var Negocio = React.createClass({
             React.createElement(
               "p",
               null,
-              data.descripcion.larga
+              data.descripcion.corta
             )
           )
         ),
@@ -19796,13 +19796,13 @@ var Negocio = React.createClass({
             React.createElement(
               "dt",
               null,
-              "Lunes a Viernes: ",
+              "L a V: ",
               data.horarios[0].abre,
               " a ",
               data.horarios[0].cierra,
               " ",
               React.createElement("br", null),
-              "Sabados: ",
+              "S y D: ",
               data.horarios[1].abre,
               " a ",
               data.horarios[1].cierra,
@@ -19872,8 +19872,7 @@ var Resultados = React.createClass({
 		return React.createElement(
 			'div',
 			null,
-			'Resultados de busqueda',
-			React.createElement(ListaNegocios, { negocios: ["Enemedios", "01"] })
+			React.createElement(ListaNegocios, { negocios: ["Enemedios", "02", "03", "04", "05", "06", "07", "08"] })
 		);
 	}
 });
@@ -19882,13 +19881,829 @@ module.exports = Resultados;
 
 },{"./ListaNegocios.jsx":168,"react":166}],171:[function(require,module,exports){
 var React = require('react');
+var Resultados = require('./Resultados.jsx');
+
+var Mainpage = React.createClass({
+  displayName: 'Mainpage',
+
+  render: function () {
+    return React.createElement(
+      'div',
+      { className: 'page-wrapper' },
+      React.createElement(
+        'header',
+        { className: 'header' },
+        React.createElement(
+          'div',
+          { className: 'header-wrapper' },
+          React.createElement(
+            'div',
+            { className: 'container' },
+            React.createElement(
+              'div',
+              { className: 'header-inner' },
+              React.createElement(
+                'div',
+                { className: 'header-logo' },
+                React.createElement(
+                  'a',
+                  { href: 'index.html' },
+                  React.createElement('img', { src: 'assets/img/logo.png', alt: 'Logo', width: '70 px', height: '65px' })
+                )
+              ),
+              React.createElement(
+                'div',
+                { className: 'header-content' },
+                React.createElement(
+                  'div',
+                  { className: 'header-bottom' },
+                  React.createElement(
+                    'div',
+                    { className: 'header-action' },
+                    React.createElement(
+                      'a',
+                      { href: '/nuevonegocio/', className: 'header-action-inner', title: 'Agregar Nuevo Negocio', 'data-toggle': 'tooltip', 'data-placement': 'bottom' },
+                      React.createElement('i', { className: 'fa fa-plus' })
+                    )
+                  ),
+                  React.createElement(
+                    'ul',
+                    { className: 'header-nav-primary nav nav-pills collapse navbar-collapse' },
+                    React.createElement(
+                      'li',
+                      { className: 'active' },
+                      React.createElement(
+                        'a',
+                        { href: '#' },
+                        'Inicio'
+                      )
+                    ),
+                    React.createElement(
+                      'li',
+                      null,
+                      React.createElement(
+                        'a',
+                        { href: 'directorio.html' },
+                        'Directorio'
+                      )
+                    ),
+                    React.createElement(
+                      'li',
+                      { className: 'has-mega-menu ' },
+                      React.createElement(
+                        'a',
+                        { href: '#' },
+                        'EneMedios ',
+                        React.createElement('i', { className: 'fa fa-chevron-down' })
+                      ),
+                      React.createElement(
+                        'ul',
+                        { className: 'mega-menu' },
+                        React.createElement(
+                          'li',
+                          null,
+                          React.createElement(
+                            'a',
+                            { href: '#' },
+                            'Quienes Somos'
+                          ),
+                          React.createElement(
+                            'ul',
+                            null,
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Staff'
+                              )
+                            ),
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Historia'
+                              )
+                            ),
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'ADN'
+                              )
+                            )
+                          )
+                        ),
+                        React.createElement(
+                          'li',
+                          null,
+                          React.createElement(
+                            'a',
+                            { href: '#' },
+                            'Que Hacemos'
+                          ),
+                          React.createElement(
+                            'ul',
+                            null,
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Medios Impresos'
+                              )
+                            ),
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Medios Electronicos'
+                              )
+                            ),
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Enseñanza'
+                              )
+                            ),
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Otros'
+                              )
+                            )
+                          )
+                        ),
+                        React.createElement(
+                          'li',
+                          null,
+                          React.createElement(
+                            'a',
+                            { href: '#' },
+                            'Como lo Hacemos'
+                          ),
+                          React.createElement(
+                            'ul',
+                            null,
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Lorem ipsum'
+                              )
+                            ),
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Lorem ipsum'
+                              )
+                            ),
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Lorem ipsum'
+                              )
+                            ),
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Lorem ipsum'
+                              )
+                            ),
+                            React.createElement(
+                              'li',
+                              null,
+                              React.createElement(
+                                'a',
+                                { href: '#' },
+                                'Lorem ipsum'
+                              )
+                            )
+                          )
+                        ),
+                        React.createElement(
+                          'li',
+                          { className: 'hidden-xs' },
+                          React.createElement(
+                            'div',
+                            { className: 'special' },
+                            React.createElement(
+                              'a',
+                              { href: 'register.html' },
+                              'Unete a ',
+                              React.createElement('br', null),
+                              'Nosotros'
+                            )
+                          )
+                        )
+                      )
+                    ),
+                    React.createElement(
+                      'li',
+                      null,
+                      React.createElement(
+                        'a',
+                        { href: 'login.html' },
+                        'Ingresar'
+                      )
+                    ),
+                    React.createElement(
+                      'li',
+                      null,
+                      React.createElement(
+                        'a',
+                        { href: 'signup.html' },
+                        'Inscribirte'
+                      )
+                    ),
+                    React.createElement(
+                      'li',
+                      null,
+                      React.createElement(
+                        'a',
+                        { href: 'contacto/' },
+                        'Contacto '
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    'button',
+                    { className: 'navbar-toggle collapsed', type: 'button', 'data-toggle': 'collapse', 'data-target': '.header-nav-primary' },
+                    React.createElement(
+                      'span',
+                      { className: 'sr-only' },
+                      'Toggle navigation'
+                    ),
+                    React.createElement('span', { className: 'icon-bar' }),
+                    React.createElement('span', { className: 'icon-bar' }),
+                    React.createElement('span', { className: 'icon-bar' })
+                  )
+                )
+              )
+            )
+          )
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'main' },
+        React.createElement(
+          'div',
+          { className: 'main-inner' },
+          React.createElement(
+            'div',
+            { className: 'container' },
+            React.createElement(
+              'div',
+              { className: 'row' },
+              React.createElement(
+                'div',
+                { className: 'document-title' },
+                React.createElement(
+                  'h1',
+                  null,
+                  'Resultados de Busqueda'
+                ),
+                React.createElement(
+                  'ul',
+                  { className: 'breadcrumb' },
+                  React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                      'a',
+                      { href: '#' },
+                      'Comida'
+                    )
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                      'a',
+                      { href: '#' },
+                      'Elotes y esquites'
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                'div',
+                { className: 'col-sm-8 col-lg-9' },
+                React.createElement(
+                  'div',
+                  { className: 'content' },
+                  React.createElement(
+                    'form',
+                    { className: 'filter', method: 'post', action: '?' },
+                    React.createElement(
+                      'div',
+                      { className: 'row' },
+                      React.createElement(
+                        'div',
+                        { className: 'input-group' },
+                        React.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Buscar por negocio, producto o servicio' }),
+                        React.createElement(
+                          'span',
+                          { className: 'input-group-btn' },
+                          React.createElement(
+                            'button',
+                            { className: 'btn btn-primary', type: 'button' },
+                            'Buscar'
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'page-title' },
+                    React.createElement(
+                      'h2',
+                      { style: { display: 'inline' } },
+                      '16 Negocios que venden Elotes'
+                    )
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'cards-row' },
+                    React.createElement(Resultados, null)
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'pager' },
+                    React.createElement(
+                      'ul',
+                      null,
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          'Prev'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          '1'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        { className: 'active' },
+                        React.createElement(
+                          'a',
+                          null,
+                          '2'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          '3'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          '4'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          '5'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          '6'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          'Sig'
+                        )
+                      )
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                'div',
+                { className: 'col-sm-4 col-lg-3' },
+                React.createElement(
+                  'div',
+                  { className: 'sidebar' },
+                  React.createElement(
+                    'div',
+                    { className: 'widget' },
+                    React.createElement(
+                      'h2',
+                      { className: 'widgettitle' },
+                      'Mapa'
+                    ),
+                    React.createElement(
+                      'div',
+                      { className: 'cards-small' },
+                      React.createElement(
+                        'div',
+                        { className: 'card-small' },
+                        React.createElement('img', { width: '500', src: 'http://maps.googleapis.com/maps/api/staticmap?center=Ojo+de+agua&zoom=15&scale=1&size=300x500&maptype=roadmap&format=png&visual_refresh=true', alt: 'Google Map of Ojo de agua', className: 'img-responsive' })
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'widget' },
+                    React.createElement(
+                      'h2',
+                      { className: 'widgettitle' },
+                      'Filter'
+                    ),
+                    React.createElement(
+                      'div',
+                      { className: 'background-white p20' },
+                      React.createElement(
+                        'form',
+                        { method: 'post', action: '?' },
+                        React.createElement(
+                          'div',
+                          { className: 'form-group' },
+                          React.createElement(
+                            'label',
+                            { htmlFor: true },
+                            'Keyword'
+                          ),
+                          React.createElement('input', { type: 'text', className: 'form-control', name: true, id: true })
+                        ),
+                        React.createElement(
+                          'div',
+                          { className: 'form-group' },
+                          React.createElement(
+                            'label',
+                            { htmlFor: true },
+                            'Category'
+                          ),
+                          React.createElement(
+                            'select',
+                            { className: 'form-control', title: 'Select Category' },
+                            React.createElement(
+                              'option',
+                              null,
+                              'Automotive'
+                            ),
+                            React.createElement(
+                              'option',
+                              null,
+                              'Real Estate'
+                            )
+                          )
+                        ),
+                        React.createElement(
+                          'div',
+                          { className: 'form-group' },
+                          React.createElement(
+                            'label',
+                            { htmlFor: true },
+                            'Location'
+                          ),
+                          React.createElement(
+                            'select',
+                            { className: 'form-control', title: 'Select Location' },
+                            React.createElement(
+                              'option',
+                              null,
+                              'New York'
+                            ),
+                            React.createElement(
+                              'option',
+                              null,
+                              'San Francisco'
+                            )
+                          )
+                        ),
+                        React.createElement(
+                          'div',
+                          { className: 'form-group' },
+                          React.createElement(
+                            'label',
+                            { htmlFor: true },
+                            'Starting Price'
+                          ),
+                          React.createElement('input', { type: 'text', className: 'form-control', name: true, id: true })
+                        ),
+                        React.createElement(
+                          'button',
+                          { className: 'btn btn-primary btn-block', type: 'submit' },
+                          'Search'
+                        )
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'widget' },
+                    React.createElement(
+                      'h2',
+                      { className: 'widgettitle' },
+                      'Categorias'
+                    ),
+                    React.createElement(
+                      'ul',
+                      { className: 'menu' },
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          'El Menu'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          'Automoviles'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          'Reparacion'
+                        )
+                      ),
+                      React.createElement(
+                        'li',
+                        null,
+                        React.createElement(
+                          'a',
+                          { href: '#' },
+                          'Escuelas'
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      ),
+      React.createElement(
+        'footer',
+        { className: 'footer' },
+        React.createElement(
+          'div',
+          { className: 'footer-top' },
+          React.createElement(
+            'div',
+            { className: 'container' },
+            React.createElement(
+              'div',
+              { className: 'row' },
+              React.createElement(
+                'div',
+                { className: 'col-sm-4' },
+                React.createElement(
+                  'h2',
+                  null,
+                  'Acerca de EneMedios'
+                ),
+                React.createElement(
+                  'p',
+                  null,
+                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+                )
+              ),
+              React.createElement(
+                'div',
+                { className: 'col-sm-4' },
+                React.createElement(
+                  'h2',
+                  null,
+                  'Informacion de Contacto'
+                ),
+                React.createElement(
+                  'p',
+                  null,
+                  'Abrevadero Mz 79 Lt 15, Ojo de Agua,',
+                  React.createElement('br', null),
+                  ' Tecamac, Estado de Mexico, Mexico.',
+                  React.createElement('br', null),
+                  ' Tel: (55)593-8-77-42, ',
+                  React.createElement(
+                    'a',
+                    { href: '#' },
+                    'javodg'
+                  )
+                )
+              ),
+              React.createElement(
+                'div',
+                { className: 'col-sm-4' },
+                React.createElement(
+                  'h2',
+                  null,
+                  'Mantente Conectado'
+                ),
+                React.createElement(
+                  'ul',
+                  { className: 'social-links nav nav-pills' },
+                  React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                      'a',
+                      { href: '#' },
+                      React.createElement('i', { className: 'fa fa-twitter' })
+                    )
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                      'a',
+                      { href: '#' },
+                      React.createElement('i', { className: 'fa fa-facebook' })
+                    )
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                      'a',
+                      { href: '#' },
+                      React.createElement('i', { className: 'fa fa-google-plus' })
+                    )
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                      'a',
+                      { href: '#' },
+                      React.createElement('i', { className: 'fa fa-linkedin' })
+                    )
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                      'a',
+                      { href: '#' },
+                      React.createElement('i', { className: 'fa fa-dribbble' })
+                    )
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                      'a',
+                      { href: '#' },
+                      React.createElement('i', { className: 'fa fa-instagram' })
+                    )
+                  ),
+                  React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                      'a',
+                      { href: '#' },
+                      React.createElement('i', { className: 'fa fa-pinterest-p' })
+                    )
+                  )
+                )
+              )
+            )
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'footer-bottom' },
+          React.createElement(
+            'div',
+            { className: 'container' },
+            React.createElement(
+              'div',
+              { className: 'footer-bottom-left' },
+              '© 2016 Todos los derechos reservados.'
+            ),
+            React.createElement(
+              'div',
+              { className: 'footer-bottom-right' },
+              React.createElement(
+                'ul',
+                { className: 'nav nav-pills' },
+                React.createElement(
+                  'li',
+                  null,
+                  React.createElement(
+                    'a',
+                    { href: 'index.html' },
+                    'Inicio'
+                  )
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  React.createElement(
+                    'a',
+                    { href: 'listado.html' },
+                    'Directorio'
+                  )
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  React.createElement(
+                    'a',
+                    { href: 'terminos.html' },
+                    'Terminos y Condiciones'
+                  )
+                ),
+                React.createElement(
+                  'li',
+                  null,
+                  React.createElement(
+                    'a',
+                    { href: 'contacto.html' },
+                    'Contacto'
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = Mainpage;
+
+},{"./Resultados.jsx":170,"react":166}],172:[function(require,module,exports){
+var React = require('react');
 var ReactDOM = require('react-dom');
 
-var Resultados = require('./components/Resultados.jsx');
-//var Lista = require('./components/ListaNegocios.jsx');
+//var Resultados = require('./components/Resultados.jsx');
+var Mainpage = require('./components/directorio.jsx');
 
 //ReactDOM.render(<Navbar />, document.getElementById('Navbar'));
 //ReactDOM.render(<Negocio  nombre="Enemedios" />, document.getElementById('Negocio'));
-ReactDOM.render(React.createElement(Resultados, null), document.getElementById('Resultados'));
+ReactDOM.render(React.createElement(Mainpage, null), document.getElementById('main'));
 
-},{"./components/Resultados.jsx":170,"react":166,"react-dom":1}]},{},[171]);
+},{"./components/directorio.jsx":171,"react":166,"react-dom":1}]},{},[172]);
