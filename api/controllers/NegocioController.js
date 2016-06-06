@@ -22,18 +22,18 @@ module.exports = {
   });
  },
  buscar: function (req, res) {
-  Negocio.find({ nombre: 'EneMedios' });
-  Negocio.find({nombre:'EneMedios'}).exec(function (err, datos){
+   var q = req.query.q;
+  Negocio.find({ nombre : {  'contains' : q } }).exec(function (err, datos){
   if (err) {
     return res.negotiate(err);
   }
-  sails.log('Wow, there are %d users named Finn.  Check it out:', datos.length, datos);
+  //return res.attachment('../../chat.html');
   return res.json(datos);
 });
  },
  nuevo: function (req, res) {
   var negocioJSON = {
-   "nombre": "EneMedios",
+   "nombre": "Otro Negocio",
    "razonsocial": "Javier Diaz Gaitan",
    "encargado": "Javier Diaz Gaitan",
    "categoria": ["Publicidad"],
