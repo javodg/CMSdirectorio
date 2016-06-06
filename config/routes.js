@@ -36,7 +36,7 @@ module.exports.routes = {
   },
   'GET lista/' : {
     view : 'lista'
-  }
+  },
   //'/': {
   //  view: 'index.html'
   //}
