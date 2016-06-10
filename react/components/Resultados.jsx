@@ -1,19 +1,26 @@
 var React = require('react');
 var ListaNegocios = require('./ListaNegocios.jsx');
+var NegociosAPI = require('../services/negociosapi');
+
+var d = '';
 
 var Resultados = React.createClass({
 	getInitialState: function() {
-		return { negocios: [], nuevoNegocio: '' }
+		return { negocios: [] }
 	},
-	handleSubmit: function(e) {
-		e.preventDefault();
-		var Negociosactuales = this.state.items;
-		Negociosactuales.push(this.state.nuevoNegocio);
+	componentWillMount: function() {
+		NegociosAPI.buscar('EneMedios')
+		.then(function(data) {
+			this.setState({ negocios : data });
+			d = data;
+			console.log(d[0].nombre);
+		}.bind(this));
 	},
 	render: function() {
 		return (
 			<div>
-				<ListaNegocios negocios={["Enemedios","02","03","04","05","06","07","08"]} />
+
+				<ListaNegocios />
 			</div>
 		)
 

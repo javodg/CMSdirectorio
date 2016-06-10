@@ -1,5 +1,5 @@
 var React = require('react');
-var Resultados = require('./Resultados.jsx');
+var Resultados = require('./ListaNegocios.jsx');
 
 var Directorio = React.createClass({
   render: function() {

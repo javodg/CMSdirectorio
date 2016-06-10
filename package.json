@@ -29,7 +29,8 @@
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9",
     "sails-mongo": "^0.12.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "whatwg-fetch": "^1.0.0"
   },
   "scripts": {
     "watchify": "watchify react/main.jsx -v -t [babelify --presets [ react ] ] -o assets/js/main.js",

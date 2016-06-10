@@ -33,12 +33,12 @@ module.exports = {
  },
  nuevo: function (req, res) {
   var negocioJSON = {
-   "nombre": "Otro Negocio",
-   "razonsocial": "Javier Diaz Gaitan",
-   "encargado": "Javier Diaz Gaitan",
-   "categoria": ["Publicidad"],
-   "giro": ["Publicidad local"],
-   "producto": ["Producto 1", "Producto 2", "producto 3"],
+   "nombre": "Torteria La hacienda",
+   "razonsocial": "Dueño de Tortetria",
+   "encargado": "Tortero",
+   "categoria": ["El Menu"],
+   "giro": ["Tortas"],
+   "producto": ["Tortas", "Tacos", "Hamburgesas"],
    "contacto": {
     "telefono": [{
      "tipo": "celuluar",
@@ -50,7 +50,7 @@ module.exports = {
      "lada": "55"
     }],
     "mail": ["javodg@gmail.com", "algomas@otracmpañia.com"],
-    "web": ["www.enemedios.mx"],
+    "web": ["www.torteria.mx"],
     "social": [{
      "tipo": "facebook",
      "direccion": "https://www.facebook.com/javonox"
@@ -61,16 +61,16 @@ module.exports = {
    },
    "horarios": [{
     "dias": [1, 2, 3, 4, 5],
-    "abre": "9",
-    "cierra": "16"
+    "abre": "7",
+    "cierra": "17"
    }, {
     "dias": [6],
-    "abre": "9",
-    "cierra": "14"
+    "abre": "8",
+    "cierra": "20"
    }, {
     "dias": [7],
-    "abre": false,
-    "cierra": false
+    "abre": "8",
+    "cierra": "20"
    }],
    "local": [{
     "calle": "Violetas Mz 170 Lt 36 b",
@@ -82,7 +82,7 @@ module.exports = {
     "lat": -99.0240617
    }],
    "descripcion": {
-    "corta": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "corta": "Tortas, hamburgesas y tacos.",
     "larga": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
    }
   };

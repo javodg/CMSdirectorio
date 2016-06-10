@@ -32,7 +32,7 @@ var Root = React.createClass({
                         <a href="directorio.html">Directorio</a>
                       </li>
                       <li className="has-mega-menu ">
-                        <a href="#">EneMedios <i className="fa fa-chevron-down" /></a>
+                        <a href="#">Vox Media<i className="fa fa-chevron-down" /></a>
                         <ul className="mega-menu">
                           <li>
                             <a href="#">Quienes Somos</a>

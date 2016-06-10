@@ -24995,9 +24995,9 @@ var Routes = React.createElement(
 
 module.exports = Routes;
 
-},{"./components/Dir.jsx":230,"./components/Index.jsx":231,"./components/Root.jsx":235,"react":227,"react-router":31}],230:[function(require,module,exports){
+},{"./components/Dir.jsx":230,"./components/Index.jsx":231,"./components/Root.jsx":234,"react":227,"react-router":31}],230:[function(require,module,exports){
 var React = require('react');
-var Resultados = require('./Resultados.jsx');
+var Resultados = require('./ListaNegocios.jsx');
 
 var Directorio = React.createClass({
   displayName: 'Directorio',
@@ -25338,7 +25338,7 @@ var Directorio = React.createClass({
 
 module.exports = Directorio;
 
-},{"./Resultados.jsx":234,"react":227}],231:[function(require,module,exports){
+},{"./ListaNegocios.jsx":232,"react":227}],231:[function(require,module,exports){
 var React = require('react');
 
 var Index = React.createClass({
@@ -25943,65 +25943,41 @@ module.exports = Index;
 },{"react":227}],232:[function(require,module,exports){
 var React = require('react');
 var Negocio = require('./Negocio.jsx');
+var NegociosAPI = require('../services/negociosapi');
+
+var d = '';
 
 var ListaNegocios = React.createClass({
 	displayName: 'ListaNegocios',
 
+	getInitialState: function () {
+		return { negocios: [] };
+	},
+	componentWillMount: function () {
+		NegociosAPI.buscar('').then(function (data) {
+			this.setState({ negocios: data });
+			d = data;
+			console.log(d[0].nombre);
+		}.bind(this));
+	},
 	render: function () {
-		var crearNegocio = function (nombre, id) {
-			return React.createElement(Negocio, { key: id + nombre, nombre: nombre });
-		};
+		var enlistarNegocios = this.state.negocios.map(function (item) {
+			return React.createElement(Negocio, {
+				key: item.nombre,
+				datos: item });
+		});
 		return React.createElement(
 			'div',
 			null,
-			this.props.negocios.map(crearNegocio)
+			enlistarNegocios
 		);
 	}
 });
 
 module.exports = ListaNegocios;
 
-},{"./Negocio.jsx":233,"react":227}],233:[function(require,module,exports){
+},{"../services/negociosapi":236,"./Negocio.jsx":233,"react":227}],233:[function(require,module,exports){
 var React = require('react');
-
-var data = {
-  id: 1,
-  identificacion: {
-    nombre: "EneMedios",
-    razonsocial: "Javier Diaz Gaitan",
-    encargado: "Javier Diaz Gaitan"
-  },
-  clasificacion: {
-    categoria: ["Publicidad"],
-    giro: ["Publicidad local"],
-    producto: ["Producto 1", "Producto 2", "producto 3"]
-  },
-  contacto: {
-    telefono: [{ tipo: "celuluar", numero: "5538922314", lada: "55" }, { tipo: "local", numero: "59384426", lada: "55" }],
-    mail: ["javodg@gmail.com", "algomas@otracmpañia.com"],
-    web: ["www.enemedios.mx"],
-    social: [{
-      tipo: "facebook",
-      direccion: "https://www.facebook.com/javonox"
-    }, {
-      tipo: "twitter",
-      direccion: "https://twitter.com/javonox"
-    }]
-  },
-  horarios: [{ dias: [1, 2, 3, 4, 5], abre: "9", cierra: "16" }, { dias: [6], abre: "9", cierra: "14" }, { dias: [7], abre: false, cierra: false }],
-  local: [{
-    calle: "Violetas Mz 170 Lt 36 b",
-    colonia: "Ojo de Agua",
-    CP: "55770",
-    municipio: "Tecamac",
-    estado: "Mexico",
-    lon: 19.675484,
-    lat: -99.0240617
-  }],
-  descripcion: {
-    corta: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    larga: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
-};
 
 var Negocio = React.createClass({
   displayName: "Negocio",
@@ -26022,17 +25998,17 @@ var Negocio = React.createClass({
             React.createElement(
               "a",
               { href: "listing-detail.html" },
-              data.clasificacion.categoria
+              this.props.datos.categoria
             )
           ),
           React.createElement(
             "div",
             { className: "card-row-price" },
-            data.clasificacion.producto[0],
+            this.props.datos.producto[0],
             " / ",
-            data.clasificacion.producto[1],
+            this.props.datos.producto[1],
             " / ",
-            data.clasificacion.producto[2]
+            this.props.datos.producto[2]
           )
         ),
         React.createElement(
@@ -26044,7 +26020,7 @@ var Negocio = React.createClass({
             React.createElement(
               "a",
               { href: "listing-detail.html" },
-              this.props.nombre
+              this.props.datos.nombre
             )
           ),
           React.createElement(
@@ -26053,7 +26029,7 @@ var Negocio = React.createClass({
             React.createElement(
               "p",
               null,
-              data.descripcion.corta
+              this.props.datos.descripcion.corta
             )
           )
         ),
@@ -26072,15 +26048,15 @@ var Negocio = React.createClass({
               "dt",
               null,
               "L a V: ",
-              data.horarios[0].abre,
+              this.props.datos.horarios[0].abre,
               " a ",
-              data.horarios[0].cierra,
+              this.props.datos.horarios[0].cierra,
               " ",
               React.createElement("br", null),
               "S y D: ",
-              data.horarios[1].abre,
+              this.props.datos.horarios[1].abre,
               " a ",
-              data.horarios[1].cierra,
+              this.props.datos.horarios[1].cierra,
               " ",
               React.createElement("br", null)
             ),
@@ -26092,7 +26068,7 @@ var Negocio = React.createClass({
             React.createElement(
               "dt",
               null,
-              data.clasificacion.categoria
+              this.props.datos.categoria
             ),
             React.createElement(
               "dd",
@@ -26118,43 +26094,10 @@ var Negocio = React.createClass({
     );
   }
 });
-/* var data = [ { identificacion: { nombre: "EneMedios", razonsocial: "Javier Diaz Gaitan", encargado: "Javier Diaz Gaitan" }, clasificacion: { categoria: [ "Publicidad" ], giro: [ "Publicidad local" ], producto: [ "Producto 1", "Producto
-2", "producto 3" ] }, contacto: { "telefono": [ { tipo: "celuluar", numero: "5538922314", lada: "55" }, { tipo: "local", numero: "59384426", lada: "55" } ], mail: [ "javodg@gmail.com", "algomas@otracmpañia.com" ], web: [ "www.enemedios.mx"
-], social: [ { tipo: "facebook", "direccion": "https://www.facebook.com/javonox" }, { "tipo": "twitter", "direccion": "https://twitter.com/javonox" } ] }, "horarios": [ { "dias": [ 1, 2, 3, 4, 5 ], "abre": "9", "cierra": "16" }, { "dias": [ 6 ], "abre":
-"9", "cierra": "14" }, { "dias": [ 7 ], "abre": false, "cierra": false } ], "local": [ { "calle": "Violetas Mz 170 Lt 36 b", "colonia": "Ojo de Agua", "CP": "55770", "municipio": "Tecamac", "estado": "Mexico", "lon": 19.675484, "lat": -99.0240617 } ],
-"descripcion": { "corta": "Lorem ipsum dolor sit amet consectetur adipisicing elit.", "larga": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-deserunt mollit anim id est laborum." }, "createdAt": "2016-05-11T23:38:00.767Z", "updatedAt": "2016-05-11T23:38:00.767Z", "id": "5733c258cd512d9020ad43d4" } ]; */
 
 module.exports = Negocio;
 
 },{"react":227}],234:[function(require,module,exports){
-var React = require('react');
-var ListaNegocios = require('./ListaNegocios.jsx');
-
-var Resultados = React.createClass({
-	displayName: 'Resultados',
-
-	getInitialState: function () {
-		return { negocios: [], nuevoNegocio: '' };
-	},
-	handleSubmit: function (e) {
-		e.preventDefault();
-		var Negociosactuales = this.state.items;
-		Negociosactuales.push(this.state.nuevoNegocio);
-	},
-	render: function () {
-		return React.createElement(
-			'div',
-			null,
-			React.createElement(ListaNegocios, { negocios: ["Enemedios", "02", "03", "04", "05", "06", "07", "08"] })
-		);
-	}
-});
-
-module.exports = Resultados;
-
-},{"./ListaNegocios.jsx":232,"react":227}],235:[function(require,module,exports){
 var React = require('react');
 
 var Root = React.createClass({
@@ -26227,7 +26170,7 @@ var Root = React.createClass({
                       React.createElement(
                         "a",
                         { href: "#" },
-                        "EneMedios ",
+                        "Vox Media",
                         React.createElement("i", { className: "fa fa-chevron-down" })
                       ),
                       React.createElement(
@@ -26640,7 +26583,7 @@ var Root = React.createClass({
 
 module.exports = Root;
 
-},{"react":227}],236:[function(require,module,exports){
+},{"react":227}],235:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 
@@ -26651,4 +26594,33 @@ var Mainpage = require('./Routes.jsx');
 //ReactDOM.render(<Negocio  nombre="Enemedios" />, document.getElementById('Negocio'));
 ReactDOM.render(Mainpage, document.getElementById('main'));
 
-},{"./Routes.jsx":229,"react":227,"react-dom":1}]},{},[236]);
+},{"./Routes.jsx":229,"react":227,"react-dom":1}],236:[function(require,module,exports){
+//var fetch = require('whatwg-fetch');
+//TODO investigar por que funciona asi
+
+var baseURL = 'http://localhost:8080/negocio/buscar?q=';
+
+var NegociosAPI = {
+  buscar: function (q) {
+    console.log(baseURL + q);
+    return fetch(baseURL + q).then(function (res) {
+      //var respond = res.json();
+      //console.log(respond);
+      return res.json();
+    });
+  } /*,
+    put: function(url) {
+     console.log('Pendiente')
+    },
+    // TODO hacer las funciones del resto del CRUD para NegociosAPI
+    delete: function(url) {
+     console.log('Pendiente')
+    },
+    update: function(url) {
+     console.log('Pendiente')
+    }*/
+};
+
+module.exports = NegociosAPI;
+
+},{}]},{},[235]);
